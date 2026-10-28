@@ -2,14 +2,16 @@ name: Deploy site
 
 # Builds the docs in triagedaemon/triaged (docs/ + mkdocs.yml) and publishes
 # them at https://triagedaemon.github.io. The source of truth is the code repo;
-# this repo only holds the build. Runs on a schedule so docs changes in triaged
-# appear within a few hours, and on demand from the Actions tab.
+# this repo only holds the build. A push to triaged's docs sends a docs-updated
+# repository_dispatch when that repo has a SITE_DISPATCH_TOKEN secret; the hourly
+# schedule is the fallback (GitHub can delay scheduled runs), and the Actions tab
+# can run it on demand.
 
 on:
   push:
     branches: [main]
   schedule:
-    - cron: "17 */3 * * *"
+    - cron: "17 * * * *"
   workflow_dispatch:
   repository_dispatch:
     types: [docs-updated]
