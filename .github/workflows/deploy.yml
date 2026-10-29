@@ -5,7 +5,8 @@ name: Deploy site
 # this repo only holds the build. A push to triaged's docs sends a docs-updated
 # repository_dispatch when that repo has a SITE_DISPATCH_TOKEN secret; the hourly
 # schedule is the fallback (GitHub can delay scheduled runs), and the Actions tab
-# can run it on demand.
+# can run it on demand. triaged is private, so the checkout uses the
+# TRIAGED_READ_TOKEN secret (see README).
 
 on:
   push:
@@ -32,6 +33,10 @@ jobs:
         with:
           repository: triagedaemon/triaged
           path: src
+          # triaged is private: a fine-grained token with read access to its contents.
+          # Falls back to the workflow token, which can only read public repos.
+          token: ${{ secrets.TRIAGED_READ_TOKEN || github.token }}
+          persist-credentials: false
       - uses: actions/setup-python@v5
         with:
           python-version: "3.13"
