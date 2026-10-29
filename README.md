@@ -1,6 +1,6 @@
 # triagedaemon.github.io
 
-The website for [Triage Daemon](https://github.com/triagedaemon/triaged), open-source escalation triage: **https://triagedaemon.github.io**
+The website for [Triage Daemon](https://github.com/triagedaemon/triaged), escalation triage: **https://triagedaemon.github.io**
 
 This repo holds no content of its own. The pages are written in
 [`triagedaemon/triaged`](https://github.com/triagedaemon/triaged) under `docs/` (with `mkdocs.yml`),
@@ -17,4 +17,4 @@ publishes them with GitHub Pages.
 
 The Docs workflow in `triaged` then pings this repo after every docs change on `main`. Without the secret that step is skipped and the hourly schedule still publishes.
 
-Licence: Apache-2.0, as in the main repo.
+Copyright 2026 The Triage Daemon Authors. All rights reserved: viewing the site is permitted; copying, hosting or reusing it needs written permission. See the [licence](https://github.com/triagedaemon/triaged/blob/main/LICENSE).
